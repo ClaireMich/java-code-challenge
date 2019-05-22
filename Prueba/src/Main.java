@@ -1,35 +1,36 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class Main {
 
 
     public static void main(String[] args) {
 
-//        if (args.length < 1)
-//        {
-//            System.out.println("You must enter a path to a directory with the csv for creating the table");
-//            System.out.println("Example (Windows): c:/work/people.csv");
-//            return;
-//        }else
-//        {
-//            readCSV(args);
-//        }
-        args =new String[1];
-        args[0]="people.csv";
-        readCSV(args);
+        if (args.length < 1)
+        {
+            System.out.println("You must enter a path for the csv for creating the table");
+            System.out.println("Example (Windows): c:/work/people.csv");
+            return;
+        }else
+        {
+            readCSV(args);
+        }
+//        args =new String[1];
+//        args[0]="peopleed.csv";
+//        readCSV(args);
     }
 
     private static void readCSV(String[] args){
         String file=args[0];
+        if(!fileExist(file)) {
+            System.out.println("Error: file does not exist please enter a valid path for the csv");
+            return;
+        }
         String[] allArgs=setDefaultValues();
         if(args.length>1)
             for(int i=1; i< args.length; i++)
             {
                 if(args[i].compareToIgnoreCase("d")!=0)
-                    allArgs[i]=args[i];
+                    allArgs[i-1]=args[i];
             }
         BufferedReader br = null;
         String line = "", cvsSplitBy="";
@@ -51,8 +52,6 @@ public class Main {
                     data = line.split(cvsSplitBy);
                     dbConnect.addingValues(data, allArgs[1]);
                 }
-                //Imprime datos.
-                System.out.println(data[0] + ", " + data[1] + ", " + data[2] + ", " + data[3] + ", " + data[4]);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -66,6 +65,7 @@ public class Main {
                     e.printStackTrace();
                 }
             }
+            System.out.println("Finish creating table with data on mysql");
         }
     }
 
@@ -96,5 +96,13 @@ public class Main {
         if(line.split("\t")!=null)
             return "\t";
         return "";
+    }
+
+    private static Boolean fileExist(String file){
+        File f = new File(file);
+        if(f.exists() && !f.isDirectory()) {
+            return true;
+        }
+        return false;
     }
 }
