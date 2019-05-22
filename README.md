@@ -33,4 +33,5 @@ Examples:
 		This will create a Database (If does not exist) called People
 
 	csv-to-table.bat people.csv d PeopleTableName
-		This will connect to default database which is called "databasetest" and create a table called "PeopleTableName" which will have data added
+		This will connect to default database which is called "databasetest" and create 
+		a table called "PeopleTableName" which will have data added
