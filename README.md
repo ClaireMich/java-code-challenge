@@ -10,7 +10,7 @@ In order to make this code work go to your command line and position in folder j
 
 For simple test run 
 
-csv-to-table.bat people.csv
+	csv-to-table.bat people.csv
 
 This command line will create a database called "databasetest" with one table "tabletest", all data will be added in this table. 
 If it is needed to connect to a different configuration you just need to add them as a parameter 
@@ -33,4 +33,5 @@ Examples:
 		This will create a Database (If does not exist) called People
 
 	csv-to-table.bat people.csv d PeopleTableName
-		This will connect to default database which is called "databasetest" and create a table called "PeopleTableName" which will have data added
+		This will connect to default database which is called "databasetest" and create 
+		a table called "PeopleTableName" which will have data added
