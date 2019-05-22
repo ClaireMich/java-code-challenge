@@ -91,8 +91,6 @@ public class Main {
         String [] datos =null;
         if(line.split(";")!=null)
             return ";";
-        if(line.split(",")!=null)
-            return ",";
         if(line.split("\t")!=null)
             return "\t";
         return "";
