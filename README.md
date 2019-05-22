@@ -10,7 +10,7 @@ In order to make this code work go to your command line and position in folder j
 
 For simple test run 
 
-csv-to-table.bat people.csv
+	csv-to-table.bat people.csv
 
 This command line will create a database called "databasetest" with one table "tabletest", all data will be added in this table. 
 If it is needed to connect to a different configuration you just need to add them as a parameter 
